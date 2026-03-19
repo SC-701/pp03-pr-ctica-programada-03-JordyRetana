@@ -1,0 +1,83 @@
+﻿@page
+@model Web.Pages.Vehiculos.IndexModel
+@{
+    ViewData["Title"] = "Listado de Vehículos";
+}
+
+<header class="subhead py-4">
+    <div class="container text-center">
+        <div class="masthead-subheading">SC-701: Programación Web Avanzada</div>
+        <h1 class="masthead-heading text-uppercase mb-0">Listado de Vehículos</h1>
+        <p class="text-muted mb-0">Administra el inventario de vehículos.</p>
+    </div>
+</header>
+
+<section class="page-section bg-light py-5" id="principal">
+    <div class="container">
+
+        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4">
+            <div>
+                <h2 class="h4 mb-0">Vehículos registrados</h2>
+                <p class="text-muted mb-0 small">Consulta, edita o elimina registros.</p>
+            </div>
+
+            <a class="btn btn-success btn-lg" asp-page="./Agregar">
+                <i class="bi bi-plus-square me-1"></i> Agregar
+            </a>
+        </div>
+
+        @if (Model.vehiculos == null || !Model.vehiculos.Any())
+        {
+            <div class="alert alert-warning" role="alert">
+                No hay vehículos disponibles.
+            </div>
+        }
+        else
+        {
+            <div class="row g-4">
+                @foreach (var vehiculo in Model.vehiculos)
+                {
+                    <div class="col-sm-6 col-lg-4">
+                        <div class="card h-100 shadow-sm border-0">
+                            <div class="card-body d-flex flex-column">
+                                <div class="d-flex align-items-start justify-content-between">
+                                    <h5 class="card-title mb-1">
+                                        <i class="bi bi-car-front-fill me-1"></i>
+                                        @vehiculo.Marca @vehiculo.Modelo
+                                    </h5>
+                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle">
+                                        @vehiculo.Anio
+                                    </span>
+                                </div>
+
+                                <div class="text-muted small mb-3">
+                                    <i class="bi bi-tag me-1"></i> @vehiculo.Placa
+                                </div>
+
+                                <div class="mt-auto d-flex flex-wrap gap-2">
+                                    <a class="btn btn-outline-primary btn-sm"
+                                       asp-page="./Detalle"
+                                       asp-route-id="@vehiculo.Id">
+                                        <i class="bi bi-info-square me-1"></i> Detalle
+                                    </a>
+
+                                    <a class="btn btn-outline-warning btn-sm"
+                                       asp-page="./Editar"
+                                       asp-route-id="@vehiculo.Id">
+                                        <i class="bi bi-pencil-square me-1"></i> Editar
+                                    </a>
+
+                                    <a class="btn btn-outline-danger btn-sm"
+                                       asp-page="./Eliminar"
+                                       asp-route-id="@vehiculo.Id">
+                                        <i class="bi bi-trash3 me-1"></i> Eliminar
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>

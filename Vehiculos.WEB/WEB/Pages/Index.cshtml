@@ -1,0 +1,53 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Inicio";
+}
+
+<header class="masthead py-5">
+    <div class="container text-center py-5">
+        <div class="masthead-subheading">Curso SC-701</div>
+        <h1 class="masthead-heading text-uppercase">Programación Web Avanzada</h1>
+        <p class="text-muted mb-4">Módulo de gestión de vehículos: registrar, consultar, editar y eliminar.</p>
+
+        <div class="d-flex gap-2 justify-content-center flex-wrap">
+            <a class="btn btn-primary btn-lg" asp-page="/Vehiculos/Index">
+                <i class="bi bi-car-front me-1"></i> Ir a Vehículos
+            </a>
+            <a class="btn btn-outline-secondary btn-lg" asp-page="/Vehiculos/Agregar">
+                <i class="bi bi-plus-square me-1"></i> Agregar Vehículo
+            </a>
+        </div>
+    </div>
+</header>
+
+<section class="page-section py-5" id="principal">
+    <div class="container">
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h3 class="h5"><i class="bi bi-list-check me-1"></i> Listado</h3>
+                        <p class="text-muted mb-0">Visualiza todos los vehículos registrados y su información básica.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h3 class="h5"><i class="bi bi-pencil-square me-1"></i> Mantenimiento</h3>
+                        <p class="text-muted mb-0">Edita datos del propietario, precio, año, color, etc.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card h-100 shadow-sm border-0">
+                    <div class="card-body">
+                        <h3 class="h5"><i class="bi bi-shield-check me-1"></i> Validación</h3>
+                        <p class="text-muted mb-0">Campos con validación y formularios más claros y consistentes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
