@@ -4,77 +4,95 @@
     ViewData["Title"] = "Detalle del Vehículo";
 }
 
-<header class="subhead py-4">
-    <div class="container text-center">
-        <div class="masthead-subheading">SC-701: Programación Web Avanzada</div>
-        <h1 class="masthead-heading text-uppercase mb-0">Detalle del Vehículo</h1>
-        <p class="text-muted mb-0">Información completa del registro.</p>
-    </div>
-</header>
+<section class="vehicle-page">
+    <div class="vehicle-wrapper">
+        <div class="vehicle-hero">
+            <div class="vehicle-hero-content">
+                <div>
+                    <span class="vehicle-kicker">
+                        <i class="bi bi-car-front-fill me-2"></i>SC-701 · Módulo de Vehículos
+                    </span>
+                    <h1 class="vehicle-title">Detalle del Vehículo</h1>
+                    <p class="vehicle-subtitle">
+                        Consulta la información completa del vehículo registrado en el sistema.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-<section class="page-section py-5 bg-light" id="principal">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-9 col-lg-10">
+        <div class="detail-wrapper">
+            <div class="detail-card">
+                <div class="detail-header">
+                    <img src="~/assets/img/car.png" alt="Vehículo" />
+                    <span class="badge">@Html.DisplayFor(m => m.vehiculo.Anio)</span>
+                    <h1>@Html.DisplayFor(m => m.vehiculo.Marca) @Html.DisplayFor(m => m.vehiculo.Modelo)</h1>
+                    <p class="mb-0">
+                        <i class="bi bi-tag me-1"></i>
+                        Placa: @Html.DisplayFor(m => m.vehiculo.Placa)
+                    </p>
+                </div>
 
-                <div class="card shadow-sm border-0 overflow-hidden">
-                    <div class="row g-0">
-                        <div class="col-md-4 bg-body-tertiary d-flex align-items-center justify-content-center p-4">
-                            <img src="~/assets/img/car.png" class="img-fluid" style="max-height: 180px;" alt="Vehículo">
+                <div class="detail-content">
+                    <div class="info-section">
+                        <div class="info-group">
+                            <h3>Información general</h3>
+
+                            <div class="info-item">
+                                <span class="info-label">Marca</span>
+                                <span class="info-value">@Html.DisplayFor(m => m.vehiculo.Marca)</span>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-label">Modelo</span>
+                                <span class="info-value">@Html.DisplayFor(m => m.vehiculo.Modelo)</span>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-label">Placa</span>
+                                <span class="info-value">@Html.DisplayFor(m => m.vehiculo.Placa)</span>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-label">Año</span>
+                                <span class="info-value">@Html.DisplayFor(m => m.vehiculo.Anio)</span>
+                            </div>
+
+                            <div class="info-item">
+                                <span class="info-label">Color</span>
+                                <span class="info-value">@Html.DisplayFor(m => m.vehiculo.Color)</span>
+                            </div>
                         </div>
 
-                        <div class="col-md-8">
-                            <div class="card-body p-4 p-md-5">
-                                <div class="d-flex align-items-start justify-content-between gap-3">
-                                    <div>
-                                        <h2 class="h4 mb-1">
-                                            @Html.DisplayFor(m => m.vehiculo.Marca) @Html.DisplayFor(m => m.vehiculo.Modelo)
-                                        </h2>
-                                        <div class="text-muted small">
-                                            <i class="bi bi-tag me-1"></i> Placa: @Html.DisplayFor(m => m.vehiculo.Placa)
-                                        </div>
-                                    </div>
+                        <div class="info-group">
+                            <h3>Información del propietario</h3>
 
-                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle">
-                                        @Html.DisplayFor(m => m.vehiculo.Anio)
-                                    </span>
-                                </div>
+                            <div class="info-item">
+                                <span class="info-label">Correo electrónico</span>
+                                <span class="info-value">@Html.DisplayFor(m => m.vehiculo.CorreoPropietario)</span>
+                            </div>
 
-                                <hr class="my-4" />
-
-                                <div class="row g-3">
-                                    <div class="col-sm-6">
-                                        <div class="text-muted small">Precio</div>
-                                        <div class="fw-semibold">@Html.DisplayFor(m => m.vehiculo.Precio)</div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="text-muted small">Color</div>
-                                        <div class="fw-semibold">@Html.DisplayFor(m => m.vehiculo.Color)</div>
-                                    </div>
-
-                                    <div class="col-12">
-                                        <div class="text-muted small">Contacto</div>
-                                        <div class="fw-semibold">
-                                            <i class="bi bi-envelope me-1"></i> @Html.DisplayFor(m => m.vehiculo.CorreoPropietario)
-                                            <span class="mx-2 text-muted">|</span>
-                                            <i class="bi bi-telephone me-1"></i> @Html.DisplayFor(m => m.vehiculo.TelefonoPropietario)
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="d-flex gap-2 justify-content-end mt-4">
-                                    <a class="btn btn-outline-secondary" asp-page="./Index">Regresar</a>
-                                    <a class="btn btn-warning" asp-page="./Editar" asp-route-id="@Model.vehiculo.Id">
-                                        <i class="bi bi-pencil-square me-1"></i> Editar
-                                    </a>
-                                </div>
-
+                            <div class="info-item">
+                                <span class="info-label">Teléfono</span>
+                                <span class="info-value">@Html.DisplayFor(m => m.vehiculo.TelefonoPropietario)</span>
                             </div>
                         </div>
                     </div>
-                </div>
 
+                    <div class="price-box">
+                        <div class="label">Precio registrado</div>
+                        <div class="value">@Html.DisplayFor(m => m.vehiculo.Precio)</div>
+                    </div>
+
+                    <div class="detail-actions">
+                        <a class="btn-form-secondary" asp-page="./Index">
+                            <i class="bi bi-arrow-left-circle me-1"></i> Regresar
+                        </a>
+
+                        <a class="btn-form-primary" asp-page="./Editar" asp-route-id="@Model.vehiculo.Id">
+                            <i class="bi bi-pencil-square me-1"></i> Editar
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

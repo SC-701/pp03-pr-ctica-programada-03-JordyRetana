@@ -4,71 +4,102 @@
     ViewData["Title"] = "Eliminar Vehículo";
 }
 
-<header class="subhead py-4">
-    <div class="container text-center">
-        <div class="masthead-subheading">SC-701: Programación Web Avanzada</div>
-        <h1 class="masthead-heading text-uppercase mb-0">Eliminar Vehículo</h1>
-        <p class="text-muted mb-0">Confirma antes de eliminar.</p>
-    </div>
-</header>
+<section class="vehicle-page">
+    <div class="vehicle-wrapper">
+        <div class="vehicle-hero">
+            <div class="vehicle-hero-content">
+                <div>
+                    <span class="vehicle-kicker">
+                        <i class="bi bi-trash3-fill me-2"></i>SC-701 · Módulo de Vehículos
+                    </span>
+                    <h1 class="vehicle-title">Eliminar Vehículo</h1>
+                    <p class="vehicle-subtitle">
+                        Revisa la información del registro antes de confirmar la eliminación.
+                    </p>
+                </div>
+            </div>
+        </div>
 
-<section class="page-section bg-light py-5" id="principal">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-xl-6 col-lg-7 col-md-9 col-sm-11">
-
-                <div class="card shadow-sm border-0">
-                    <div class="card-body p-4 p-md-5">
-                        <div class="alert alert-danger d-flex align-items-start gap-2">
-                            <i class="bi bi-exclamation-triangle-fill mt-1"></i>
-                            <div>
-                                <div class="fw-semibold">Acción irreversible</div>
-                                <div class="small">Este registro se eliminará permanentemente.</div>
-                            </div>
-                        </div>
-
-                        <h2 class="h5 mb-3">Datos del vehículo</h2>
-
-                        <dl class="row mb-4">
-                            <dt class="col-sm-4">Marca</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(m => m.vehiculo.Marca)</dd>
-
-                            <dt class="col-sm-4">Modelo</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(m => m.vehiculo.Modelo)</dd>
-
-                            <dt class="col-sm-4">Placa</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(m => m.vehiculo.Placa)</dd>
-
-                            <dt class="col-sm-4">Año</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(m => m.vehiculo.Anio)</dd>
-
-                            <dt class="col-sm-4">Color</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(m => m.vehiculo.Color)</dd>
-
-                            <dt class="col-sm-4">Correo</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(m => m.vehiculo.CorreoPropietario)</dd>
-
-                            <dt class="col-sm-4">Teléfono</dt>
-                            <dd class="col-sm-8">@Html.DisplayFor(m => m.vehiculo.TelefonoPropietario)</dd>
-                        </dl>
-
-                        <form method="post" class="d-flex gap-2 justify-content-end">
-                            <a class="btn btn-outline-secondary" asp-page="./Index">Cancelar</a>
-                            <button type="submit" class="btn btn-danger">
-                                <i class="bi bi-trash3 me-1"></i> Eliminar
-                            </button>
-
-                            <input type="hidden" asp-for="vehiculo.Marca" />
-                            <input type="hidden" asp-for="vehiculo.Modelo" />
-                            <input type="hidden" asp-for="vehiculo.Placa" />
-                            <input type="hidden" asp-for="vehiculo.TelefonoPropietario" />
-                            <input type="hidden" asp-for="vehiculo.CorreoPropietario" />
-                            <input type="hidden" asp-for="vehiculo.Color" />
-                            <input type="hidden" asp-for="vehiculo.Anio" />
-                        </form>
-                    </div>
+        <div class="form-wrapper">
+            <div class="form-card">
+                <div class="form-header">
+                    <i class="bi bi-exclamation-triangle-fill"></i>
+                    <h2>Confirmación de eliminación</h2>
+                    <p>Esta acción eliminará el registro seleccionado del sistema.</p>
                 </div>
 
+                <div class="form-body">
+                    <div class="glass-card p-3 mb-4">
+                        <div class="d-flex align-items-start gap-3">
+                            <i class="bi bi-exclamation-octagon-fill fs-3 text-danger"></i>
+                            <div>
+                                <div class="fw-bold text-white mb-1">Acción irreversible</div>
+                                <div class="text-footer-muted">
+                                    Verifica cuidadosamente la información antes de continuar, ya que el registro no podrá recuperarse.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="info-group mb-4">
+                        <h3>Datos del vehículo</h3>
+
+                        <div class="info-item">
+                            <span class="info-label">Marca</span>
+                            <span class="info-value">@Html.DisplayFor(m => m.vehiculo.Marca)</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label">Modelo</span>
+                            <span class="info-value">@Html.DisplayFor(m => m.vehiculo.Modelo)</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label">Placa</span>
+                            <span class="info-value">@Html.DisplayFor(m => m.vehiculo.Placa)</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label">Año</span>
+                            <span class="info-value">@Html.DisplayFor(m => m.vehiculo.Anio)</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label">Color</span>
+                            <span class="info-value">@Html.DisplayFor(m => m.vehiculo.Color)</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label">Correo del propietario</span>
+                            <span class="info-value">@Html.DisplayFor(m => m.vehiculo.CorreoPropietario)</span>
+                        </div>
+
+                        <div class="info-item">
+                            <span class="info-label">Teléfono del propietario</span>
+                            <span class="info-value">@Html.DisplayFor(m => m.vehiculo.TelefonoPropietario)</span>
+                        </div>
+                    </div>
+
+                    <form method="post">
+                        <div class="form-actions">
+                            <a class="btn-form-secondary" asp-page="./Index">
+                                <i class="bi bi-x-circle me-1"></i> Cancelar
+                            </a>
+
+                            <button type="submit" class="btn-form-danger">
+                                <i class="bi bi-trash3 me-1"></i> Eliminar
+                            </button>
+                        </div>
+
+                        <input type="hidden" asp-for="vehiculo.Marca" />
+                        <input type="hidden" asp-for="vehiculo.Modelo" />
+                        <input type="hidden" asp-for="vehiculo.Placa" />
+                        <input type="hidden" asp-for="vehiculo.TelefonoPropietario" />
+                        <input type="hidden" asp-for="vehiculo.CorreoPropietario" />
+                        <input type="hidden" asp-for="vehiculo.Color" />
+                        <input type="hidden" asp-for="vehiculo.Anio" />
+                    </form>
+                </div>
             </div>
         </div>
     </div>

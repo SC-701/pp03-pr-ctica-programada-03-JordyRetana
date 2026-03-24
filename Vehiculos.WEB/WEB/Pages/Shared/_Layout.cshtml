@@ -1,44 +1,97 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - WEB</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/WEB.styles.css" asp-append-version="true" />
 </head>
-<body>
+<body class="app-body">
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg custom-navbar fixed-top">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">WEB</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand brand-wrap" asp-area="" asp-page="/Index">
+                    <div class="brand-badge">
+                        <i class="bi bi-car-front-fill"></i>
+                    </div>
+                    <div>
+                        <span class="brand-text d-block">WEB</span>
+                        <small class="brand-subtext">Gestión de Vehículos</small>
+                    </div>
+                </a>
+
+                <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                        aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="collapse navbar-collapse" id="mainNavbar">
+                    <ul class="navbar-nav ms-auto align-items-lg-center gap-lg-2">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                            <a class="nav-link nav-pill @(ViewContext.RouteData.Values["page"]?.ToString() == "/Index" ? "active" : "")"
+                                   asp-area="" asp-page="/Index">
+                                <i class="bi bi-house-door me-1"></i> Inicio
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                            <a class="nav-link nav-pill @(ViewContext.RouteData.Values["page"]?.ToString()?.Contains("/Vehiculos") == true ? "active" : "")"
+                                   asp-area="" asp-page="/Vehiculos/Index">
+                                <i class="bi bi-car-front me-1"></i> Vehículos
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-pill nav-cta"
+                                   asp-area="" asp-page="/Vehiculos/Agregar">
+                                <i class="bi bi-plus-circle me-1"></i> Agregar vehículo
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link nav-pill"
+                                   asp-area="" asp-page="/Privacy">
+                                <i class="bi bi-shield-lock me-1"></i> Privacy
+                            </a>
                         </li>
                     </ul>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    <div class="main-content">
+        <main role="main" class="pb-4">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="footer-premium">
         <div class="container">
-            &copy; 2026 - WEB - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <div class="footer-box">
+                <div>
+                    <h6 class="footer-title mb-1">WEB · Sistema de Gestión de Vehículos</h6>
+                    <p class="text-footer-muted mb-0">
+                        Plataforma para registrar, consultar, editar y administrar vehículos de forma moderna y ordenada.
+                    </p>
+                </div>
+
+                <div class="footer-social">
+                    <a asp-area="" asp-page="/Index" title="Inicio"><i class="bi bi-house-door-fill"></i></a>
+                    <a asp-area="" asp-page="/Vehiculos/Index" title="Vehículos"><i class="bi bi-car-front-fill"></i></a>
+                    <a asp-area="" asp-page="/Vehiculos/Agregar" title="Agregar"><i class="bi bi-plus-lg"></i></a>
+                    <a asp-area="" asp-page="/Privacy" title="Privacy"><i class="bi bi-shield-lock-fill"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-copy text-center mt-3">
+                &copy; 2026 - WEB
+            </div>
         </div>
     </footer>
 

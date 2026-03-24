@@ -4,75 +4,133 @@
     ViewData["Title"] = "Listado de Vehículos";
 }
 
-<header class="subhead py-4">
-    <div class="container text-center">
-        <div class="masthead-subheading">SC-701: Programación Web Avanzada</div>
-        <h1 class="masthead-heading text-uppercase mb-0">Listado de Vehículos</h1>
-        <p class="text-muted mb-0">Administra el inventario de vehículos.</p>
-    </div>
-</header>
+<section class="vehicle-page">
+    <div class="vehicle-wrapper">
+        <div class="vehicle-hero">
+            <div class="vehicle-hero-content">
+                <div>
+                    <span class="vehicle-kicker">
+                        <i class="bi bi-car-front-fill me-2"></i>SC-701 · Módulo de Vehículos
+                    </span>
+                    <h1 class="vehicle-title">Listado de Vehículos</h1>
+                    <p class="vehicle-subtitle">
+                        Consulta, administra y da seguimiento a los vehículos registrados en el sistema.
+                    </p>
+                </div>
 
-<section class="page-section bg-light py-5" id="principal">
-    <div class="container">
-
-        <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center gap-2 mb-4">
-            <div>
-                <h2 class="h4 mb-0">Vehículos registrados</h2>
-                <p class="text-muted mb-0 small">Consulta, edita o elimina registros.</p>
+                <a class="btn-vehicle-main" asp-page="./Agregar">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Agregar Vehículo
+                </a>
             </div>
 
-            <a class="btn btn-success btn-lg" asp-page="./Agregar">
-                <i class="bi bi-plus-square me-1"></i> Agregar
-            </a>
+            <div class="vehicle-stats">
+                <div class="stat-card">
+                    <div class="stat-icon blue">
+                        <i class="bi bi-car-front-fill"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span>Total de registros</span>
+                        <h4>@(Model.vehiculos?.Count() ?? 0)</h4>
+                    </div>
+                </div>
+
+                <div class="stat-card">
+                    <div class="stat-icon cyan">
+                        <i class="bi bi-journal-check"></i>
+                    </div>
+                    <div class="stat-info">
+                        <span>Estado del módulo</span>
+                        <h4>Activo</h4>
+                    </div>
+                </div>
+            </div>
         </div>
 
         @if (Model.vehiculos == null || !Model.vehiculos.Any())
         {
-            <div class="alert alert-warning" role="alert">
-                No hay vehículos disponibles.
+            <div class="premium-empty">
+                <div class="empty-icon-wrap">
+                    <i class="bi bi-car-front"></i>
+                </div>
+                <h3>No hay vehículos registrados</h3>
+                <p>
+                    Actualmente no existen registros disponibles en el sistema. Puedes agregar un nuevo vehículo para comenzar.
+                </p>
+                <a class="btn-vehicle-main" asp-page="./Agregar">
+                    <i class="bi bi-plus-circle-fill"></i>
+                    Agregar Vehículo
+                </a>
             </div>
         }
         else
         {
-            <div class="row g-4">
+            <div class="vehicle-grid">
                 @foreach (var vehiculo in Model.vehiculos)
                 {
-                    <div class="col-sm-6 col-lg-4">
-                        <div class="card h-100 shadow-sm border-0">
-                            <div class="card-body d-flex flex-column">
-                                <div class="d-flex align-items-start justify-content-between">
-                                    <h5 class="card-title mb-1">
-                                        <i class="bi bi-car-front-fill me-1"></i>
-                                        @vehiculo.Marca @vehiculo.Modelo
-                                    </h5>
-                                    <span class="badge bg-primary-subtle text-primary border border-primary-subtle">
-                                        @vehiculo.Anio
-                                    </span>
+                    <div class="vehicle-card-premium">
+                        <div class="vehicle-card-top">
+                            <div class="vehicle-overlay-glow"></div>
+
+                            <div class="vehicle-year-badge">
+                                @vehiculo.Anio
+                            </div>
+
+                            <div class="vehicle-image-wrap">
+                                <img src="~/assets/img/car.png" alt="Vehículo" class="vehicle-image" />
+                            </div>
+                        </div>
+
+                        <div class="vehicle-card-body">
+                            <div class="vehicle-main-info">
+                                <div>
+                                    <h3>@vehiculo.Marca @vehiculo.Modelo</h3>
+                                    <p class="vehicle-plate">
+                                        <i class="bi bi-tag me-1"></i>@vehiculo.Placa
+                                    </p>
                                 </div>
 
-                                <div class="text-muted small mb-3">
-                                    <i class="bi bi-tag me-1"></i> @vehiculo.Placa
+                                <div class="vehicle-price-box">
+                                    <span>Precio</span>
+                                    <strong>@vehiculo.Precio</strong>
+                                </div>
+                            </div>
+
+                            <div class="vehicle-info-list">
+                                <div class="info-chip">
+                                    <span class="label">Color</span>
+                                    <span class="value">@vehiculo.Color</span>
                                 </div>
 
-                                <div class="mt-auto d-flex flex-wrap gap-2">
-                                    <a class="btn btn-outline-primary btn-sm"
+                                <div class="info-chip">
+                                    <span class="label">Correo</span>
+                                    <span class="value truncate-text">@vehiculo.CorreoPropietario</span>
+                                </div>
+
+                                <div class="info-chip">
+                                    <span class="label">Teléfono</span>
+                                    <span class="value">@vehiculo.TelefonoPropietario</span>
+                                </div>
+                            </div>
+
+                            <div class="vehicle-actions">
+                                <a class="btn-card-action btn-view"
                                        asp-page="./Detalle"
                                        asp-route-id="@vehiculo.Id">
-                                        <i class="bi bi-info-square me-1"></i> Detalle
-                                    </a>
+                                    <i class="bi bi-info-circle me-1"></i> Detalle
+                                </a>
 
-                                    <a class="btn btn-outline-warning btn-sm"
+                                <a class="btn-card-action btn-edit"
                                        asp-page="./Editar"
                                        asp-route-id="@vehiculo.Id">
-                                        <i class="bi bi-pencil-square me-1"></i> Editar
-                                    </a>
+                                    <i class="bi bi-pencil-square me-1"></i> Editar
+                                </a>
 
-                                    <a class="btn btn-outline-danger btn-sm"
+                                <a class="btn-card-action btn-delete"
                                        asp-page="./Eliminar"
                                        asp-route-id="@vehiculo.Id">
-                                        <i class="bi bi-trash3 me-1"></i> Eliminar
-                                    </a>
-                                </div>
+                                    <i class="bi bi-trash3 me-1"></i> Eliminar
+                                </a>
                             </div>
                         </div>
                     </div>

@@ -4,47 +4,169 @@
     ViewData["Title"] = "Inicio";
 }
 
-<header class="masthead py-5">
-    <div class="container text-center py-5">
-        <div class="masthead-subheading">Curso SC-701</div>
-        <h1 class="masthead-heading text-uppercase">Programación Web Avanzada</h1>
-        <p class="text-muted mb-4">Módulo de gestión de vehículos: registrar, consultar, editar y eliminar.</p>
+<section class="home-hero py-5">
+    <div class="container min-vh-75 d-flex align-items-center">
+        <div class="row align-items-center g-5 w-100">
+            <div class="col-lg-6">
+                <span class="home-badge">
+                    <i class="bi bi-stars me-2"></i>Curso SC-701 · Proyecto Web
+                </span>
 
-        <div class="d-flex gap-2 justify-content-center flex-wrap">
-            <a class="btn btn-primary btn-lg" asp-page="/Vehiculos/Index">
-                <i class="bi bi-car-front me-1"></i> Ir a Vehículos
-            </a>
-            <a class="btn btn-outline-secondary btn-lg" asp-page="/Vehiculos/Agregar">
-                <i class="bi bi-plus-square me-1"></i> Agregar Vehículo
-            </a>
+                <h1 class="home-title">
+                    Sistema moderno para
+                    <span>gestión de vehículos</span>
+                </h1>
+
+                <p class="home-subtitle">
+                    Administra la información de los vehículos desde una interfaz clara, ordenada y visualmente atractiva.
+                    Consulta registros, agrega nuevos vehículos, edita información existente y mantén un mejor control del módulo.
+                </p>
+
+                <div class="d-flex gap-3 flex-wrap">
+                    <a class="btn-home-primary" asp-page="/Vehiculos/Index">
+                        <i class="bi bi-car-front-fill"></i>
+                        Ir a Vehículos
+                    </a>
+
+                    <a class="btn-home-secondary" asp-page="/Vehiculos/Agregar">
+                        <i class="bi bi-plus-square-fill"></i>
+                        Agregar Vehículo
+                    </a>
+                </div>
+
+                <div class="home-mini-stats">
+                    <div class="mini-stat">
+                        <i class="bi bi-card-list"></i>
+                        <div>
+                            <strong>Consulta de registros</strong>
+                            <span>Visualiza la información de los vehículos registrados de forma rápida y ordenada</span>
+                        </div>
+                    </div>
+
+                    <div class="mini-stat">
+                        <i class="bi bi-pencil-square"></i>
+                        <div>
+                            <strong>Actualización de datos</strong>
+                            <span>Modifica información relevante del vehículo cuando sea necesario</span>
+                        </div>
+                    </div>
+
+                    <div class="mini-stat">
+                        <i class="bi bi-check2-square"></i>
+                        <div>
+                            <strong>Mejor organización</strong>
+                            <span>Centraliza el control del módulo en una interfaz visual más clara y consistente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="hero-banner-card">
+                    <img src="~/assets/img/vehiculo-home.png" alt="Vehículo principal" class="hero-banner-image" />
+
+                    <div class="hero-banner-overlay"></div>
+                    <div class="hero-banner-glow"></div>
+
+                    <div class="hero-banner-content">
+                        <span class="hero-banner-chip">
+                            <i class="bi bi-car-front-fill me-1"></i>
+                            Módulo de vehículos
+                        </span>
+
+                        <h3 class="hero-banner-title">Control y gestión de la información vehicular</h3>
+                        <p class="hero-banner-text">
+                            Registro, consulta y mantenimiento de datos en un mismo entorno.
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-</header>
+</section>
 
-<section class="page-section py-5" id="principal">
+<section class="home-features py-5" id="principal">
     <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-mini-title">Funciones principales</span>
+            <h2 class="section-main-title">Acciones principales del módulo</h2>
+            <p class="section-main-subtitle">
+                El sistema permite administrar la información vehicular mediante procesos básicos de registro,
+                consulta, actualización y validación de datos.
+            </p>
+        </div>
+
         <div class="row g-4 justify-content-center">
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body">
-                        <h3 class="h5"><i class="bi bi-list-check me-1"></i> Listado</h3>
-                        <p class="text-muted mb-0">Visualiza todos los vehículos registrados y su información básica.</p>
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card-premium h-100">
+                    <div class="feature-icon feature-blue">
+                        <i class="bi bi-list-ul"></i>
                     </div>
+                    <h3>Consulta de vehículos</h3>
+                    <p>
+                        Permite visualizar los vehículos registrados y acceder de forma rápida a su información general.
+                    </p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body">
-                        <h3 class="h5"><i class="bi bi-pencil-square me-1"></i> Mantenimiento</h3>
-                        <p class="text-muted mb-0">Edita datos del propietario, precio, año, color, etc.</p>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card-premium h-100">
+                    <div class="feature-icon feature-gold">
+                        <i class="bi bi-pencil-square"></i>
                     </div>
+                    <h3>Edición de información</h3>
+                    <p>
+                        Facilita la actualización de datos como marca, modelo, color, año, propietario y precio.
+                    </p>
                 </div>
             </div>
-            <div class="col-md-4">
-                <div class="card h-100 shadow-sm border-0">
-                    <div class="card-body">
-                        <h3 class="h5"><i class="bi bi-shield-check me-1"></i> Validación</h3>
-                        <p class="text-muted mb-0">Campos con validación y formularios más claros y consistentes.</p>
+
+            <div class="col-md-6 col-lg-4">
+                <div class="feature-card-premium h-100">
+                    <div class="feature-icon feature-green">
+                        <i class="bi bi-patch-check-fill"></i>
+                    </div>
+                    <h3>Validación de datos</h3>
+                    <p>
+                        Ayuda a mantener registros más consistentes mediante formularios estructurados y validaciones visibles.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="home-showcase py-5">
+    <div class="container">
+        <div class="showcase-box">
+            <div class="row g-4 align-items-center">
+                <div class="col-lg-7">
+                    <span class="section-mini-title">Vista general</span>
+                    <h2 class="section-main-title mb-3">Una interfaz más clara para la administración del módulo</h2>
+                    <p class="section-main-subtitle text-start mx-0 mb-0">
+                        La página principal funciona como punto de acceso al módulo de vehículos, permitiendo al usuario
+                        dirigirse rápidamente al listado general o al formulario de registro, dentro de un diseño moderno y uniforme.
+                    </p>
+                </div>
+
+                <div class="col-lg-5">
+                    <div class="showcase-side-card">
+                        <div class="showcase-item">
+                            <i class="bi bi-car-front-fill"></i>
+                            <span>Acceso al listado de vehículos</span>
+                        </div>
+                        <div class="showcase-item">
+                            <i class="bi bi-plus-square-fill"></i>
+                            <span>Ingreso de nuevos registros</span>
+                        </div>
+                        <div class="showcase-item">
+                            <i class="bi bi-window"></i>
+                            <span>Diseño visual uniforme</span>
+                        </div>
+                        <div class="showcase-item">
+                            <i class="bi bi-phone-fill"></i>
+                            <span>Adaptación a distintos tamaños de pantalla</span>
+                        </div>
                     </div>
                 </div>
             </div>
